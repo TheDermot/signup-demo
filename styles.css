@@ -28,24 +28,6 @@ img {
     "image submit-row";
 }
 
-@media (width <= 860px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 1fr 1fr 1fr;
-    grid-template-areas:
-      "image"
-      "intro-text"
-      "form-row"
-      "submit-row";
-  }
-}
-
-.intro-text,
-.form-row,
-.submit-row {
-  border-bottom: 1px black solid;
-}
-
 .image-column {
   grid-area: image;
   background-image: url(/east-side-nyc.jpg);
@@ -53,23 +35,51 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.intro-text,
+.form-row,
+.submit-row {
+  margin-inline: 5%;
+  padding-block: 2rem;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
 
 .intro-text {
   grid-area: intro-text;
-  display: flex;
-  flex-direction: column;
+
   justify-content: flex-end;
-  width: min(90%, 800px);
-  padding: 4em;
+}
+@media (width <= 860px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem auto auto 10rem;
+    grid-template-areas:
+      "image"
+      "intro-text"
+      "form-row"
+      "submit-row";
+  }
+  .intro-text {
+    justify-content: center;
+  }
+}
+@media (width < 600px) {
+  .intro-text,
+  .form-row {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+.intro-text p {
+  max-width: 80ch;
 }
 
 .form-row {
   grid-area: form-row;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+
   justify-content: center;
-  padding: 4em;
 }
 
 #form-container {
@@ -77,22 +87,27 @@ img {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 16px;
+  padding-right: 4rem;
 }
 @media (width < 600px) {
   #form-container {
     grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+  .submit-row * {
+    margin-inline: auto;
   }
 }
 
 .submit-row {
   grid-area: submit-row;
-  padding: 4em;
 }
 
 .submit-row button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: #ffffffb9;
+  color: rgb(0, 0, 0);
+  border: 1px solid;
   cursor: pointer;
+  width: min(10rem, 200px);
 }
