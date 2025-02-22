@@ -1,50 +1,59 @@
 * {
   font-family: monospace;
 }
+
 :root {
   font-size: 16px;
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 img {
-  height: auto;
   max-width: 100%;
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr; /* Adjusted rows */
   grid-template-areas:
     "image intro-text"
     "image form-row"
     "image submit-row";
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
+  .container {
     grid-template-columns: 1fr;
-    grid-template-rows: 6rem 1fr 1fr 1fr;
-    grid-template-areas: 
-    "image"
-    "intro-text"
-    "form-row"
-    "submit-row";
+    grid-template-rows: auto auto auto auto; /* Adjusted rows for mobile */
+    grid-template-areas:
+      "image"
+      "intro-text"
+      "form-row"
+      "submit-row";
   }
 }
 
-.container div {
-  border: 1px black solid;
+.intro-text,
+.form-row,
+.submit-row {
+  border-bottom: 1px black solid;
 }
 
 .image-column {
   grid-area: image;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+  background-image: url(/east-side-nyc.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.image-column img {
-  object-fit: cover;
-  overflow: hidden;
-  height: 100%;
-}
+
 .intro-text {
   grid-area: intro-text;
   display: flex;
@@ -53,9 +62,33 @@ img {
   width: min(90%, 600px);
   padding: 4em;
 }
+
 .form-row {
   grid-area: form-row;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4em;
 }
+
+#form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 16px; /* Add gap between form fields */
+}
+
 .submit-row {
   grid-area: submit-row;
+  padding: 4em;
+}
+
+/* Add styles for the submit button */
+.submit-row button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
