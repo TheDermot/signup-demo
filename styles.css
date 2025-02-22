@@ -30,7 +30,7 @@ img {
 
 .image-column {
   grid-area: image;
-  background-image: url(/east-side-nyc.jpg);
+  background-image: url(east-side-nyc.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
