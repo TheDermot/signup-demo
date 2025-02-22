@@ -18,20 +18,20 @@ img {
 
 .container {
   min-height: 100%;
-  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr; /* Adjusted rows */
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
     "image intro-text"
     "image form-row"
     "image submit-row";
 }
 
-@media (max-width: 600px) {
+@media (width <= 860px) {
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto; /* Adjusted rows for mobile */
+    grid-template-rows: 0.5fr 1fr 1fr 1fr;
     grid-template-areas:
       "image"
       "intro-text"
@@ -59,7 +59,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: min(90%, 600px);
+  width: min(90%, 800px);
   padding: 4em;
 }
 
@@ -76,7 +76,12 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  gap: 16px; /* Add gap between form fields */
+  gap: 16px;
+}
+@media (width < 600px) {
+  #form-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .submit-row {
@@ -84,7 +89,6 @@ img {
   padding: 4em;
 }
 
-/* Add styles for the submit button */
 .submit-row button {
   padding: 10px 20px;
   background-color: #007bff;
